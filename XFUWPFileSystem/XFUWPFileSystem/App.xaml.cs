@@ -16,23 +16,16 @@ namespace XFUWPFileSystem
            
             MainPage = new MainPage();
         }
-        public async void DirSearch(string sDir)
+        public async void GetDirectories(string sDir)
         {
-            var ext = new List<string> { ".txt", ".zip" };
-            var folder = await StorageFolder.GetFolderFromPathAsync(sDir);
-            //var ExactLocalFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("ExactLocalFolder");
+            
+            var folder = await StorageFolder.GetFolderFromPathAsync(sDir);   
             foreach (var file in await folder.GetFilesAsync())
             {
                 Debug.WriteLine(file.Name);
                 
             }
-            //copy the files to the folder that you want to save the extract file into
-            //foreach (var file in await ExactLocalFolder.GetFilesAsync())
-            //{
-            //    await file.CopyAsync(folder);
-            //}
-            ////delete the folder in the local folder
-            //await ExactLocalFolder.DeleteAsync();
+        
         }
         protected override void OnStart()
         {
